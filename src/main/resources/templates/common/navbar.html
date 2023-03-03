@@ -1,0 +1,98 @@
+<!-- Navbar -->
+<div id="children"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top opacity80 rounded-3 wf-sans-serif">
+        <div class="container-fluid">
+            <a class="navbar-brand wf-sans-serif" th:href="@{/}">
+                <!--
+                                <img th:src="@{/image/logo.png}" alt="logo" width="50" height="50"
+                                     class="d-inline-block align-content-center">
+                -->
+                <span class="fs-5 text-gradient-grey-color" th:text="#{i18nfields.webSiteTitle1}"></span>
+                <strong><span class="fs-3 text-gradient-color wf-cursive" th:text="#{i18nfields.webSiteTitle2}"></span></strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fadeIn timing-ease-in-out">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse fadeRightLeft timing-ease-in-out" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mt-1 me-3">
+                        <a class="nav-link" th:href="@{/}">
+                            <i class="fa-solid fa-house me-2"></i>
+                            <strong th:text="#{i18nfields.home}"></strong>
+                        </a>
+                    </li>
+                    <li class="nav-item mt-1 me-3">
+                        <a class="nav-link" th:href="@{/page?cn=about}">
+                            <i class="fa-solid fa-headphones fa-lg me-2"></i>
+                            <strong th:text="#{i18nfields.about}"></strong>
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-1 me-3">
+                        <a class="nav-link" th:href="@{/mail_form}">
+                            <i class="fa-regular fa-paper-plane fa-lg me-2"></i>
+                            <strong th:text="#{i18nfields.inquiry}"></strong>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- 認証済みの場合、表示する -->
+                <p class="mt-3 me-3" sec:authorize="authenticated">
+                    <span class="border-bottom midnight-blue-color p-2">
+                        <strong>Welcome
+                            <!-- ユーザー情報表示 -->
+                            <span sec:authentication="principal.loginUser.name">ユーザー</span> さん
+                        </strong>
+                    </span>
+                </p>
+
+                <ul class="navbar-nav d-flex justify-content-end-sm mb-2 mb-lg-0">
+                    <!-- Reserve List -->
+                    <li class="nav-item mt-0 me-3">
+                        <a sec:authorize-url="/member" class="nav-link" th:href="@{/member?p=reserve_list}">
+                            <i class="fa-solid fa-list-ul fa-lg me-2"></i>
+                            <strong th:text="#{i18nfields.reserveList}"></strong>
+                        </a>
+
+                        <a sec:authorize-url="/admin" class="nav-link" th:href="@{/admin?p=reserve_list}">
+                            <i class="fa-solid fa-list-ul fa-lg me-2"></i>
+                            <strong th:text="#{i18nfields.reserveList}"></strong>
+                        </a>
+                    </li>
+
+                    <!-- Member List -->
+                    <li class="nav-item mt-0 me-3">
+                        <a sec:authorize-url="/admin" class="nav-link" th:href="@{/admin?p=member_list}">
+                            <i class="fa-solid fa-table-list fa-lg me-2"></i>
+                            <strong th:text="#{i18nfields.memberList}"></strong>
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-1 me-2">
+                        <!-- Log in Button -->
+                        <a sec:authorize="not authenticated" class="btn btnx-indigo-light btn-sm" th:href="@{/login}">
+                            <strong th:text="#{i18nfields.login}"></strong>
+                            <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+                        </a>
+
+                        <!-- 認証済みの場合、Log out ボタンを表示する -->
+                        <form sec:authorize="authenticated" method="POST" th:action="@{/logout}">
+                            <button class="btn btnx-indigo-light btn-sm" type="submit">
+                                <span th:text="#{i18nfields.logout}"></span>
+                                <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

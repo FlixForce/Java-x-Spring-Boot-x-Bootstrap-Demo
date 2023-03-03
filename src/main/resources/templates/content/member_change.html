@@ -1,0 +1,200 @@
+<!-- Member Change -->
+<div id="children" xmlns="http://www.w3.org/1999/html">
+    <div class="container wf-sans-serif" style="margin-top: 6rem"
+         xmlns:th="http://www.thymeleaf.org"
+         xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+        <h1 class="display-3 headline-vl-green fadeLeftRight timing-ease-in-out">
+            <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.memberChange}"></span>
+        </h1>
+
+        <br/>
+
+        <!-- 例外エラー表示 -->
+        <div id="parent" th:insert="common/exception_error"/>
+
+        <form class="mt-4" th:action="@{/admin/member_change}" th:object="${studioMemberForm}" method="POST">
+            <div class="row fadeUp">
+                <!-- Member ID -->
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.studioMemberId}"/>
+                    <input type="text" class="form-control" th:field="*{id}" disabled/>
+                </div>
+
+                <br/>
+
+                <!-- Registration Date -->
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.memberRegistrationDate}"/>
+                    <input name="datetime" type="datetime-local" class="form-control" th:field="*{registrationDate}"
+                           step="3600" disabled/>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="row fadeUp timing-ease-in-out">
+                <!-- Name -->
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.name}"/>
+                    <label class="errorMessage">※</label>
+                    <input type="text" class="form-control" th:field="*{name}"/>
+                    <span class="errorMessage" th:errors="*{name}"/>
+                </div>
+
+                <br/>
+
+                <!-- Furigana -->
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.furigana}"/>
+                    <input type="text" class="form-control" th:field="*{furigana}"/>
+                </div>
+            </div>
+
+            <br/>
+
+            <!-- Address -->
+            <div class="form-group fadeUp timing-ease-in-out">
+                <label class="mb-2" th:text="#{i18nfields.address}"/>
+                <label class="errorMessage">※</label>
+                <input type="text" class="form-control" th:field="*{address}"/>
+                <span class="errorMessage" th:errors="*{address}"/>
+            </div>
+
+            <br/>
+
+            <div class="row fadeUp timing-ease-in-out">
+                <!-- Phone -->
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.phone}"/>
+                    <label class="errorMessage">※</label>
+                    <input type="text" class="form-control" th:field="*{phone}"/>
+                    <span class="errorMessage" th:errors="*{phone}"/>
+                </div>
+
+                <br/>
+
+                <!-- Mail Address -->
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.email}"/>
+                    <label class="errorMessage">※</label>
+                    <input type="text" class="form-control" placeholder="example@example.com" th:field="*{email}"/>
+                    <span class="errorMessage" th:errors="*{email}"/>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="row fadeUp timing-ease-in-out">
+                <!-- Artist Name -->
+                <div class="col-md-8 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.artistName}"/>
+                    <input type="text" class="form-control" th:field="*{artistName}"/>
+                    <span class="errorMessage" th:errors="*{artistName}"/>
+                </div>
+
+                <br/>
+
+                <!-- Member Count -->
+                <div class="col-md-4 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.memberCount}"/>
+                    <input type="number" class="form-control" th:field="*{memberCount}"/>
+                    <span class="errorMessage" th:errors="*{memberCount}"/>
+                </div>
+            </div>
+
+            <br/>
+
+            <!-- Note -->
+            <div class="col-md">
+                <div class="form-group fadeUp timing-ease-in-out">
+                    <label class="mb-2" th:text="#{i18nfields.note}"/>
+                    <textarea class="form-control" th:field="*{note}" rows="5"></textarea>
+                    <span class="errorMessage" th:errors="*{note}"/>
+                </div>
+            </div>
+
+            <!-- Administrator Option -->
+            <div class="col-md" sec:authorize-url="/admin">
+                <div class="form-group fadeUp timing-ease-in-out">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                           th:field="*{administrator}">
+                    <label class="mb-2" for="flexCheckDefault" th:text="#{i18nfields.newRegistrationAdmin}"/>
+                </div>
+            </div>
+
+            <div class="col-md mt-2">
+                <div class="form-group fadeRightLeft delay-time15">
+                    <!-- Password Change Button -->
+                    <a th:href="@{/admin?p=member_password_change}" class="btn btn-sm btnx-indigo-light me-2 mt-2"
+                       th:text="#{i18nfields.memberPasswordChangeButton}"/>
+                    <!-- Change Button -->
+                    <button type="button" class="btn btn-sm btnx-indigo-light me-2 mt-2" data-bs-toggle="modal"
+                            data-bs-target="#staticMemberChange" th:text="#{i18nfields.memberChangeButton}"/>
+                    <!-- Delete Button -->
+                    <button type="button" class="btn btn-sm btnx-indigo-light me-2 mt-2" data-bs-toggle="modal"
+                            data-bs-target="#staticMemberDelete" th:text="#{i18nfields.memberDeleteButton}"/>
+
+                    <!-- List Button -->
+                    <a th:href="@{/admin?p=member_list}"
+                       class="btn btn-sm btnx-indigo-light me-2 mt-2" th:text="#{i18nfields.memberListButton}"/>
+                    <!-- Home Button -->
+<!--                    <a th:href="@{/}" class="btn btn-sm btnx-indigo-light mt-2" th:text="#{i18nfields.homeButton}"/>-->
+                </div>
+            </div>
+
+            <!-- Member Change Confirm Dialog -->
+            <div class="modal fadeUp timing-ease-in-out rounded-3" id="staticMemberChange" data-bs-backdrop="static"
+                 data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticMemberChangeLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-dark" id="staticMemberChangeLabel"
+                                th:text="#{i18nfields.memberChangeConfirmTitle}"/>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        </div>
+                        <div class="modal-body">
+                            <label th:text="#{i18nfields.memberChangeConfirmMessage}"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-sm btnx-indigo-light"
+                                    th:text="#{i18nfields.okButton}"/>
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"
+                                    th:text="#{i18nfields.cancelButton}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member Delete Confirm Dialog -->
+            <div class="modal fadeUp timing-ease-in-out rounded-3" id="staticMemberDelete" data-bs-backdrop="static"
+                 data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticMemberDeleteLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-dark" id="staticMemberDeleteLabel"
+                                th:text="#{i18nfields.memberDeleteConfirmTitle}"/>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        </div>
+                        <div class="modal-body">
+                            <label th:text="#{i18nfields.memberDeleteConfirmMessage}"/>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Admin -->
+                            <a sec:authorize-url="/admin" th:href="@{/admin?p=member_delete-{id}(id=*{id})}"
+                               class="btn btn-sm btnx-indigo-light" th:text="#{i18nfields.okButton}"/>
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"
+                                    th:text="#{i18nfields.cancelButton}"/>
+                            <!-- Member -->
+<!--
+                            <a sec:authorize-url="/member" th:href="@{/member?p=member_delete-{id}(id=*{id})}"
+                                    class="btn btn-sm btnx-indigo-light" th:text="#{i18nfields.okButton}"/>
+-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

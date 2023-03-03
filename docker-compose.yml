@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  app:
+    image: openjdk:17
+    ports:
+      - "80:8080"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ./mvnw spring-boot:run
+    environment:
+      DATASOURCE: jdbc:postgresql://db:5432/studio_azurite_rox
+  db:
+    image: postgres:15.2
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: studio_azurite_rox
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    volumes:
+      - .docker/postgres:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"

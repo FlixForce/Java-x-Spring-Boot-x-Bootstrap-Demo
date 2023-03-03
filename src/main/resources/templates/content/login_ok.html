@@ -1,0 +1,61 @@
+<!-- Log in OK -->
+<div id="children"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <div class="container wf-sans-serif" style="margin-top: 6rem">
+        <h1 class="display-3 headline-vl-orange fadeUp timing-ease-in-out">
+            <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.loginComplete}"></span>
+        </h1>
+        <br/>
+        <div class="container mt-2">
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- 認証済みの場合、表示する -->
+                    <div sec:authorize="authenticated">
+                        <p class="border-bottom midnight-blue-color p-2 rounded-3">
+                            <strong>Welcome
+                                <!-- ユーザー情報表示 -->
+                                <span sec:authentication="principal.loginUser.name">ユーザー</span> さん
+                            </strong>
+                        </p>
+                    </div>
+
+                    <ul class="navbar-nav justify_content-end mb-2 mb-lg-0">
+                        <li class="nav-item mt-1 me-3" sec:authorize="not authenticated">
+                            <a class="btn btnx-indigo-light btn-sm" th:href="@{/login}">
+                                <strong th:text="#{i18nfields.login}"></strong>
+                                <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- 認証済みの場合、表示する -->
+                    <form class="fadeRightLeft timing-ease-in-out" sec:authorize="authenticated" method="POST" th:action="@{/logout}">
+                        <!-- Member -->
+                        <a sec:authorize-url="/member" th:href="@{/member?p=reserve_list}"
+                           class="btn btnx-indigo-light btn-sm mt-2 me-2"
+                           th:text="#{i18nfields.reserveList}"></a>
+                        <!-- Admin -->
+                        <a sec:authorize-url="/admin" th:href="@{/admin?p=reserve_list}"
+                           class="btn btnx-indigo-light btn-sm mt-2 me-2"
+                           th:text="#{i18nfields.reserveList}"></a>
+                        <a sec:authorize-url="/admin" th:href="@{/admin?p=member_list}"
+                           class="btn btnx-indigo-light btn-sm mt-2 me-2"
+                           th:text="#{i18nfields.memberList}"></a>
+                        <button class="btn btnx-indigo-light btn-sm me-2 mt-2" type="submit">
+                            <span th:text="#{i18nfields.logout}"></span>
+                            <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+                        </button>
+<!--
+                        <a th:href="@{/}"
+                           class="btn btnx-indigo-light btn-sm mt-2 md-4" th:text="#{i18nfields.home}"></a>
+-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-5">
+        <div th:replace="common/footer::footer_fragment"/>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div id="children">
+    <div class="row" th:if="${exceptionError}">
+        <div class="col-md-12 fs-5">
+<!--
+            <label class="errorMessage" th:text="#{i18nfields.dbError}"/>
+            <label class="errorMessage" th:text="#{i18nfields.tryMessage}"/>
+-->
+            <label class="errorMessage" th:text="#{i18nfields.errorCodeTitle}"/>
+            <label class="errorMessage" th:text="${errorCodeText}"/>
+            <label class="errorMessage" th:text="${errorMessageText}"/>
+        </div>
+
+        <br/>
+    </div>
+</div>

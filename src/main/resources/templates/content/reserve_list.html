@@ -1,0 +1,177 @@
+<!-- Reserve List -->
+<div id="children">
+    <div class="container wf-sans-serif" style="margin-top: 6rem"
+         xmlns:th="http://www.thymeleaf.org"
+         xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+        <h1 class="display-3 headline-vl-orange fadeLeftRight timing-ease-in-out">
+            <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.reserveList}"></span>
+        </h1>
+
+        <br />
+
+        <!-- 例外エラー表示 -->
+        <div id="parent" th:insert="common/exception_error"/>
+
+        <!-- 検索 -->
+        <form sec:authorize-url="/admin" th:action="@{/admin/reserve_search}" th:object="${reserveSearchForm}"
+              th:method="POST">
+            <div class="row fadeUp">
+                <!-- 予約ID -->
+                <div class="col-md-4 mt-4 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.reserveId}"/>
+                    <input type="number" class="form-control" th:field="*{id}" autofocus/>
+                </div>
+
+                <!-- 名前 -->
+                <div class="col-md-8 mt-4">
+                    <div class="form-group">
+                        <label class="mb-2" th:text="#{i18nfields.name}"/>
+                        <input type="text" class="form-control" th:field="*{name}"/>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="row fadeUp">
+                <!-- 会員ID -->
+                <div class="col-md-4 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.studioMemberId}"/>
+                    <input type="number" class="form-control" th:field="*{memberId}"/>
+                </div>
+
+                <!-- 開始日時 -->
+                <div class="col-md-8 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.startDatetime2}"/>
+                    <input name="datetime" type="datetime-local" class="form-control" th:field="*{startDatetime}"
+                           step="3600"/>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btnx-indigo-light btn-sm mt-3 fadeRightLeft timing-ease-in-out">検索
+            </button>
+            <a  sec:authorize-url="/admin" th:href="@{/admin/reserve_search_clear}" class="btn btnx-indigo-light btn-sm mt-3 ms-2 fadeRightLeft timing-ease-in-out">クリア</a>
+        </form>
+
+        <div sec:authorize-url="/admin" class="border-top mt-2 mb-2"></div>
+
+        <br sec:authorize-url="/member" />
+
+        <div class="row">
+            <div class="col-md">
+                <div class="fadeRightLeft timing-ease-in-out">
+                    <a th:href="@{/reserve_form}"
+                       class="btn btnx-indigo-light btn-sm mt-0 md-4 me-2"
+                       th:text="#{i18nfields.reserveButton}"></a>
+                    <a sec:authorize-url="/admin" th:href="@{/admin?p=member_list}"
+                       class="btn btnx-indigo-light btn-sm mt-0 md-4 me-2"
+                       th:text="#{i18nfields.memberList}"></a>
+<!--
+                    <a th:href="@{/}"
+                       class="btn btnx-indigo-light btn-sm mt-0 md-4"
+                       th:text="#{i18nfields.home}"></a>
+-->
+                </div>
+
+                <br />
+
+                <!-- Paging -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-end">
+                        <!-- First -->
+                        <li class="page-item" th:disabled="${pagination.page} == '1'" aria-disabled="true">
+<!--                            <a class="page-link" th:href="@{/member?p=reserve_list&page=1}" tabindex="-2" area-label="Previous">-->
+                            <a class="page-link" th:href="${pageLinkUrl + '1'}" tabindex="-2" area-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <!-- Back -->
+                        <li class="page-item" aria-disabled="true">
+<!--                            <a class="page-link" th:href="@{/member?p=reserve_list&page={page} (page = ${pagination.previousBlock})}"-->
+                            <a class="page-link" th:href="${pageLinkUrl + pagination.previousBlock}"
+                               th:disabled="${pagination.page} == '1'" tabindex="-1" aria-label="Previous">
+                                <span aria-hidden="true" th:text="#{i18nfields.paginationBack}"></span>
+                            </a>
+                        </li>
+
+                        <th:block th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
+                            <li class="page-item" th:classappend="${pagination.page == pageButton} ? active"
+                                th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
+                                th:each="pageButton : ${#numbers.sequence(start, end)}">
+<!--                                <a class="page-link" th:href="@{/member?p=reserve_list&page={page} (page = ${pageButton})}" th:text="${pageButton}"></a>-->
+                                <a class="page-link" th:href="${pageLinkUrl + pageButton}" th:text="${pageButton}"></a>
+                            </li>
+                        </th:block>
+
+                        <!-- Next -->
+                        <li class="page-item" aria-disabled="true">
+<!--                            <a class="page-link" th:href="@{/member?p=reserve_list&page={page} (page = ${pagination.nextBlock})}"-->
+                            <a class="page-link" th:href="${pageLinkUrl + pagination.nextBlock}"
+                               th:disabled="${pagination.page} == ${pagination.endPage}" aria-label="Next">
+                                <span aria-hidden="true" th:text="#{i18nfields.paginationNext}"></span>
+                            </a>
+                        </li>
+                        <!-- Last -->
+                        <li class="page-item" aria-disabled="true">
+<!--                            <a class="page-link" th:href="@{/member?p=reserve_list&page={page} (page = ${pagination.totalPageCount})}"-->
+                            <a class="page-link" th:href="${pageLinkUrl + pagination.totalPageCount}"
+                               th:disabled="${pagination.page} == ${pagination.endPage}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div th:if="${reserveFormList}">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th><label class="ms-2" th:text="#{i18nfields.reserveId}"></label></th>
+                            <!-- Amin -->
+                            <th sec:authorize-url="/admin"><label class="ms-2"
+                                                                  th:text="#{i18nfields.studioMemberId}"></label></th>
+                            <th sec:authorize-url="/admin"><label class="ms-2" th:text="#{i18nfields.name}"></label></th>
+                            <!-- Admin / Member -->
+                            <th><label class="ms-2" th:text="#{i18nfields.studioType}"></label></th>
+                            <th><label class="ms-2" th:text="#{i18nfields.startDatetimeChange}"></label></th>
+                            <th><label class="ms-2" th:text="#{i18nfields.endDatetimeChange}"></label></th>
+                            <th><label class="ms-2" th:text="#{i18nfields.engineer}"></label></th>
+                            <th><label class="ms-2" th:text="#{i18nfields.mastering}"></label></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="reserveFormData : ${reserveFormList}" th:object="${reserveFormData}"
+                            class="align-middle">
+                            <td><label class="ms-2" th:text="*{id}"></label></td>
+                            <!-- Admin -->
+                            <td sec:authorize-url="/admin"><label class="ms-2" th:text="*{memberId}"></label></td>
+                            <td sec:authorize-url="/admin"><label class="ms-2" th:text="*{name}"></label></td>
+                            <!-- Admin / Member -->
+                            <td><label class="ms-2" th:text="*{studioType}"></label></td>
+                            <td><label class="ms-2" th:text="*{startDatetime}"></label></td>
+                            <td><label class="ms-2" th:text="*{endDatetime}"></label></td>
+                            <td th:if="*{engineer}"><label class="ms-2">✓</label></td>
+                            <td th:if="*{!engineer}"></td>
+                            <td th:if="*{mastering}"><label class="ms-2">✓</label></td>
+                            <td th:if="*{!mastering}"></td>
+                            <td>
+                                <div class="ms-2">
+                                    <!-- Amin -->
+                                    <a sec:authorize-url="/admin" th:href="@{/admin?p=reserve_change-{id}(id=*{id})}"
+                                       class="btn btnx-indigo-light btn-sm mt-1 md-4 mb-1 me-2 fadeRightLeft timing-ease-in-out"
+                                       th:text="#{i18nfields.reserveChangeButton}"></a>
+                                    <!-- Member -->
+                                    <a sec:authorize-url="/member" th:href="@{/member?p=reserve_change-{id}(id=*{id})}"
+                                       class="btn btnx-indigo-light btn-sm mt-1 md-4 mb-1 me-2 fadeRightLeft timing-ease-in-out"
+                                       th:text="#{i18nfields.reserveChangeButton}"></a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

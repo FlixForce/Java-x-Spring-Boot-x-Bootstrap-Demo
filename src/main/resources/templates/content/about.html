@@ -1,0 +1,28 @@
+<!-- About -->
+<div id="children">
+    <div class="container wf-sans-serif" style="margin-top: 6rem">
+        <h1 class="display-3 headline-vl-orange fadeUp timing-ease-in-out">
+<!--
+            <label class="display-6 text-gradient-grey-color opacity80 ms-3 mb-3" th:text="#{i18nfields.webSiteTitle1}"></label>
+            <strong><label class="text-gradient-color ms-3 mb-3 wf-cursive" th:text="#{i18nfields.webSiteTitle2}"></label></strong>
+            <label class="fs-3 ms-3 text-color-grey">について</label>
+-->
+            <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.about}"></span>
+        </h1>
+        <br/>
+        <br/>
+        <div class="row">
+            <div class="col-md-12">
+                <img th:src="@{/images/r00.jpg}" alt="img" class="img-cover fluid rounded-3 fadeLeftRight timing-ease-in-out">
+            </div>
+            <div class="col-md-12">
+                <br />
+                <span class="fadeUp timing-ease-in-out delay-time1" th:text="#{i18nfields.aboueMessage}"></span>
+<!--
+                <br />
+                <a th:href="@{/}" class="btn btnx-indigo-light btn-sm mt-3 md-4 mb-2 fadeRightLeft timing-ease-in-out delay-time1" th:text="#{i18nfields.home}"></a>
+-->
+            </div>
+        </div>
+    </div>
+</div>

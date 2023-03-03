@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header::header_fragment(title = 'Java x SpringBoot x Bootstrap Demo Site | コンテンツ', scripts = ~{::script}, links = ~{::link})"/>
+<body style="background-color: whitesmoke">
+<!-- NavBar -->
+<div id="parent" th:insert="common/navbar"/>
+
+<th:block id="parent" th:insert="${contentName}"/>
+
+<!-- Footer -->
+<div class="container pt-4">
+    <div th:replace="common/footer::footer_fragment"/>
+</div>
+</body>
+</html>

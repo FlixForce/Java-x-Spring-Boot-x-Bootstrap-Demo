@@ -1,0 +1,739 @@
+a {
+    text-decoration: none;
+}
+
+.img-hidden {
+    width: 100%;
+    height: 670px;
+    /*overflow: hidden;*/
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.img-content {
+    object-fit: cover;
+    object-position: 50% 100%;
+}
+
+.footer {
+    background: linear-gradient(0deg, lightslategray, transparent);
+    color: midnightblue;
+    text-align: center;
+}
+
+.opacity80 {
+    opacity: 0.8;
+}
+
+.title-orange-light {
+    color: var(--bs-orange);
+}
+
+.title-cyan-light {
+    color: #80DEEA;
+}
+
+.title-lime-light {
+    color: #b4cc98;
+}
+
+body {
+    margin-bottom: 140px;
+}
+
+.headline-vl-orange {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    border-left-width: medium;
+    border-left-style: solid;
+    border-left-color: orange;
+}
+
+.headline-vl-green {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    border-left-width: medium;
+    border-left-style: solid;
+    border-left-color: springgreen;
+}
+
+.headline-vl-red {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    border-left-width: medium;
+    border-left-style: solid;
+    border-left-color: red;
+}
+
+/*
+.headline-hb-orange {
+    padding-top: 10px;
+    border-bottom: thin solid lightgray;
+}
+*/
+
+/*
+.btnx-cyan-light
+{
+    color: #006064; background: #80DEEA; border: 2px solid #80DEEA;
+}
+
+.btnx-lime-light {
+    !*color: #827717; background: #C5E1A5; border: 2px solid #C5E1A5;*!
+    color: #827717; background: #b4cc98; border: 2px solid #b4cc98;
+}
+*/
+
+
+/*.btnx-indigo {
+    background: var(--bs-indigo); border: 2px solid var(--bs-indigo);
+}
+
+.btnx-purple {
+    background: var(--bs-purple); border: 2px solid var(--bs-purple);
+}
+.btnx-pink {
+    background: var(--bs-pink); border: 2px solid var(--bs-pink);
+}
+.btnx-orange {
+    background: var(--bs-orange); border: 2px solid var(--bs-orange);
+}
+.btnx-teal {
+    background: var(--bs-teal); border: 2px solid var(--bs-teal);
+}
+.btnx-cyan {
+    background: var(--bs-cyan); border: 2px solid var(--bs-cyan);
+}
+.btnx-lime {
+    background: #7CB342; border: 2px solid #7CB342;
+}*/
+
+.icon-cyan-light {
+    color: #80DEEA;
+}
+
+.midnight-blue-color {
+    color: midnightblue;
+}
+
+.navbar .navbar-nav .active > .nav-link {
+    color: indigo;
+}
+
+.navbar .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+    display: inline-block;
+    background: linear-gradient(180deg, midnightblue 0%, rebeccapurple 50%, lightsteelblue 100%);
+    background: -webkit-linear-gradient(-90deg, midnightblue 0%, rebeccapurple 50%, lightsteelblue 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-color {
+    display: inline-block;
+    background: linear-gradient(180deg, plum 0%, darkslateblue 50%, lightsteelblue 100%);
+    background: -webkit-linear-gradient(-45deg, plum 0%, darkslateblue 50%, lightsteelblue 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-grey-color {
+    display: inline-block;
+    background: linear-gradient(90deg, lightslategray 0%, seagreen 50%, slategray 100%);
+    background: -webkit-linear-gradient(-45deg, lightslategray 0%, darkolivegreen 50%, slategray 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+*:focus {
+    box-shadow: none !important;
+}
+
+.btnx-indigo-light {
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-indigo);
+    background: #9FA8DA;
+    border: 2px solid #9FA8DA;
+}
+
+.btnx-purple-light {
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-purple);
+    background: #CE93D8;
+    border: 2px solid #CE93D8;
+}
+
+.btnx-pink-light {
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-pink);
+    background: #F48F81;
+    border: 2px solid #F48F81;
+}
+
+.btnx-orange-light {
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-orange);
+    background: #FFCC80;
+    border: 2px solid #FFCC80;
+}
+
+.btnx-teal-light {
+    outline: none;
+    box-shadow: none;
+    color: #004d40;
+    background: #80CBC4;
+    border: 2px solid #80CBC4;
+}
+
+.btnx-cyan-light
+{
+    outline: none;
+    box-shadow: none;
+    color: #006064;
+    background: #80DEEA;
+    border: 2px solid #80DEEA;
+}
+
+.btnx-lime-light {
+    outline: none;
+    box-shadow: none;
+    /*color: #827717; background: #C5E1A5; border: 2px solid #C5E1A5;*/
+    color: #827717;
+    background: #b4cc98;
+    border: 2px solid #b4cc98;
+}
+
+.btnx-indigo-light:hover, .btnx-indigo-light:focus,
+.btnx-indigo-light:active, .btnx-indigo-light.active:focus, .btnx-indigo-light.active:hover, .btnx-indigo-light:active.focus,
+.btnx-indigo-light.active, .btnx-indigo-light.active.focus, .btnx-indigo-light.active.hover, .btnx-indigo-light.active.focus,
+.btnx-indigo-light.disabled:hover, .btnx-indigo-light[disabled]:hover, fieldset[disabled], .btnx-indigo-light:hover,
+.btnx-indigo-light.disabled:focus, .btnx-indigo-light[disabled]:focus, fieldset[disabled], .btnx-indigo-light:focus,
+.btnx-indigo-light.disabled.focus, .btnx-indigo-light[disabled].focus, fieldset[disabled], .btnx-indigo-light.focus {
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-indigo);
+    border: 2px solid var(--bs-indigo);
+}
+
+.btnx-purple-light:hover, .btnx-purple-light:focus,
+.btnx-purple-light:active, .btnx-purple-light.active:focus, .btnx-purple-light.active:hover, .btnx-purple-light:active.focus,
+.btnx-purple-light.active, .btnx-purple-light.active.focus, .btnx-purple-light.active.hover, .btnx-purple-light.active.focus,
+.btnx-purple-light.disabled:hover, .btnx-purple-light[disabled]:hover, fieldset[disabled], .btnx-purple-light:hover,
+.btnx-purple-light.disabled:focus, .btnx-purple-light[disabled]:focus, fieldset[disabled], .btnx-purple-light:focus,
+.btnx-purple-light.disabled.focus, .btnx-purple-light[disabled].focus, fieldset[disabled], .btnx-purple-light.focus {
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-purple);
+    border: 2px solid var(--bs-purple);
+}
+
+.btnx-pink-light:hover, .btnx-pink-light:focus,
+.btnx-pink-light:active, .btnx-pink-light.active:focus, .btnx-pink-light.active:hover, .btnx-pink-light:active.focus,
+.btnx-pink-light.active, .btnx-pink-light.active.focus, .btnx-pink-light.active.hover, .btnx-pink-light.active.focus,
+.btnx-pink-light.disabled:hover, .btnx-pink-light[disabled]:hover, fieldset[disabled], .btnx-pink-light:hover,
+.btnx-pink-light.disabled:focus, .btnx-pink-light[disabled]:focus, fieldset[disabled], .btnx-pink-light:focus,
+.btnx-pink-light.disabled.focus, .btnx-pink-light[disabled].focus, fieldset[disabled], .btnx-pink-light.focus {
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-pink);
+    border: 2px solid var(--bs-pink);
+}
+
+.btnx-orange-light:hover, .btnx-orange-light:focus,
+.btnx-orange-light:active, .btnx-orange-light.active:focus, .btnx-orange-light.active:hover, .btnx-orange-light:active.focus,
+.btnx-orange-light.active, .btnx-orange-light.active.focus, .btnx-orange-light.active.hover, .btnx-orange-light.active.focus,
+.btnx-orange-light.disabled:hover, .btnx-orange-light[disabled]:hover, fieldset[disabled], .btnx-orange-light:hover,
+.btnx-orange-light.disabled:focus, .btnx-orange-light[disabled]:focus, fieldset[disabled], .btnx-orange-light:focus,
+.btnx-orange-light.disabled.focus, .btnx-orange-light[disabled].focus, fieldset[disabled], .btnx-orange-light.focus {
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-orange);
+    border: 2px solid var(--bs-orange);
+}
+
+.btnx-teal-light:hover, .btnx-teal-light:focus,
+.btnx-teal-light:active, .btnx-teal-light.active:focus, .btnx-teal-light.active:hover, .btnx-teal-light:active.focus,
+.btnx-teal-light.active, .btnx-teal-light.active.focus, .btnx-teal-light.active.hover, .btnx-teal-light.active.focus,
+.btnx-teal-light.disabled:hover, .btnx-teal-light[disabled]:hover, fieldset[disabled], .btnx-teal-light:hover,
+.btnx-teal-light.disabled:focus, .btnx-teal-light[disabled]:focus, fieldset[disabled], .btnx-teal-light:focus,
+.btnx-teal-light.disabled.focus, .btnx-teal-light[disabled].focus, fieldset[disabled], .btnx-teal-light.focus {
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-teal);
+    border: 2px solid var(--bs-teal);
+}
+
+.btnx-cyan-light:hover,
+.btnx-cyan-light:focus,
+.btnx-cyan-light:active,
+.btnx-cyan-light.active:focus,
+.btnx-cyan-light.active:hover,
+.btnx-cyan-light:active.focus,
+.btnx-cyan-light.active,
+.btnx-cyan-light.active.focus,
+.btnx-cyan-light.active.hover,
+.btnx-cyan-light.active.focus,
+.btnx-cyan-light.disabled:hover, .btnx-cyan-light[disabled]:hover, fieldset[disabled], .btnx-cyan-light:hover,
+.btnx-cyan-light.disabled:focus, .btnx-cyan-light[disabled]:focus, fieldset[disabled], .btnx-cyan-light:focus,
+.btnx-cyan-light.disabled.focus, .btnx-cyan-light[disabled].focus, fieldset[disabled], .btnx-cyan-light.focus
+{
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-cyan);
+    border: 2px solid var(--bs-cyan);
+}
+
+.btnx-lime-light:hover,.btnx-lime-light:focus,
+.btnx-lime-light:active, .btnx-lime-light.active:focus, .btnx-lime-light.active:hover, .btnx-lime-light:active.focus,
+.btnx-lime-light.active,.btnx-lime-light.active.focus, .btnx-lime-light.active.hover, .btnx-lime-light.active.focus,
+.btnx-lime-light.disabled:hover, .btnx-lime-light[disabled]:hover, fieldset[disabled], .btnx-lime-light:hover,
+.btnx-lime-light.disabled:focus, .btnx-lime-light[disabled]:focus, fieldset[disabled], .btnx-lime-light:focus,
+.btnx-lime-light.disabled.focus, .btnx-lime-light[disabled].focus, fieldset[disabled], .btnx-lime-light.focus {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    /*color: #827717; background: #7CB342; border: 2px solid #7CB342;*/
+    color: var(--bs-white);
+    background: #7CB342;
+    border: 2px solid #7CB342;
+}
+
+.indigo-light {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-indigo);
+    background: none;
+    border: 2px solid #ffffff;
+}
+
+.purple-light {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-purple);
+    background: none;
+    border: 2px solid #ffffff;
+}
+
+.pink-light {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-pink);
+    background: none;
+    border: 2px solid #ffffff;
+}
+
+.orange-light {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-orange);
+    background: none;
+    border: 2px solid #ffffff;
+}
+
+.teal-light {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: #004d40;
+    background: none;
+    border: 2px solid #ffffff;
+}
+
+.cyan-light {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: #006064;
+    background: none;
+    border: 2px solid #ffffff;
+}
+
+.lime-light {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: #827717;
+    background: none;
+    border: 2px solid #ffffff;
+}
+
+.indigo-light:hover, .indigo-light:focus,
+.indigo-light:active, .indigo-light.active:focus, .indigo-light.active:hover, .indigo-light:active.focus,
+.indigo-light.active, .indigo-light.active.focus, .indigo-light.active.hover, .indigo-light.active.focus,
+.indigo-light.disabled:hover, .indigo-light[disabled]:hover, fieldset[disabled], .indigo-light:hover,
+.indigo-light.disabled:focus, .indigo-light[disabled]:focus, fieldset[disabled], .indigo-light:focus,
+.indigo-light.disabled.focus, .indigo-light[disabled].focus, fieldset[disabled], .indigo-light.focus,
+.open > .dropdown-toggle.indigo-light,
+.open > .dropdown-toggle.indigo-light:hover,
+.open > .dropdown-toggle.indigo-light:focus,
+.open > .dropdown-toggle.indigo-light.focus {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-indigo);
+    border: 2px solid var(--bs-indigo);
+}
+
+.purple-light:hover, .purple-light:focus,
+.purple-light:active, .purple-light.active:focus, .purple-light.active:hover, .purple-light:active.focus,
+.purple-light.active, .purple-light.active.focus, .purple-light.active.hover, .purple-light.active.focus,
+.purple-light.disabled:hover, .purple-light[disabled]:hover, fieldset[disabled], .purple-light:hover,
+.purple-light.disabled:focus, .purple-light[disabled]:focus, fieldset[disabled], .purple-light:focus,
+.purple-light.disabled.focus, .purple-light[disabled].focus, fieldset[disabled], .purple-light.focus,
+.open > .dropdown-toggle.purple-light,
+.open > .dropdown-toggle.purple-light:hover,
+.open > .dropdown-toggle.purple-light:focus,
+.open > .dropdown-toggle.purple-light.focus {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-purple);
+    border: 2px solid var(--bs-purple);
+}
+
+.pink-light:hover, .pink-light:focus,
+.pink-light:active, .pink-light.active:focus, .pink-light.active:hover, .pink-light:active.focus,
+.pink-light.active, .pink-light.active.focus, .pink-light.active.hover, .pink-light.active.focus,
+.pink-light.disabled:hover, .pink-light[disabled]:hover, fieldset[disabled], .pink-light:hover,
+.pink-light.disabled:focus, .pink-light[disabled]:focus, fieldset[disabled], .pink-light:focus,
+.pink-light.disabled.focus, .pink-light[disabled].focus, fieldset[disabled], .pink-light.focus,
+.open > .dropdown-toggle.pink-light,
+.open > .dropdown-toggle.pink-light:hover,
+.open > .dropdown-toggle.pink-light:focus,
+.open > .dropdown-toggle.pink-light.focus {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-pink);
+    border: 2px solid var(--bs-pink);
+}
+
+.orange-light:hover, .orange-light:focus,
+.orange-light:active, .orange-light.active:focus, .orange-light.active:hover, .orange-light:active.focus,
+.orange-light.active, .orange-light.active.focus, .orange-light.active.hover, .orange-light.active.focus,
+.orange-light.disabled:hover, .orange-light[disabled]:hover, fieldset[disabled], .orange-light:hover,
+.orange-light.disabled:focus, .orange-light[disabled]:focus, fieldset[disabled], .orange-light:focus,
+.orange-light.disabled.focus, .orange-light[disabled].focus, fieldset[disabled], .orange-light.focus,
+.open > .dropdown-toggle.orange-light,
+.open > .dropdown-toggle.orange-light:hover,
+.open > .dropdown-toggle.orange-light:focus,
+.open > .dropdown-toggle.orange-light.focus {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-orange);
+    border: 2px solid var(--bs-orange);
+}
+
+.teal-light:hover, .teal-light:focus,
+.teal-light:active, .teal-light.active:focus, .teal-light.active:hover, .teal-light:active.focus,
+.teal-light.active, .teal-light.active.focus, .teal-light.active.hover, .teal-light.active.focus,
+.teal-light.disabled:hover, .teal-light[disabled]:hover, fieldset[disabled], .teal-light:hover,
+.teal-light.disabled:focus, .teal-light[disabled]:focus, fieldset[disabled], .teal-light:focus,
+.teal-light.disabled.focus, .teal-light[disabled].focus, fieldset[disabled], .teal-light.focus,
+.open > .dropdown-toggle.teal-light,
+.open > .dropdown-toggle.teal-light:hover,
+.open > .dropdown-toggle.teal-light:focus,
+.open > .dropdown-toggle.teal-light.focus {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-teal);
+    border: 2px solid var(--bs-teal);
+}
+
+.cyan-light:hover, .cyan-light:focus,
+.cyan-light:active, .cyan-light.active:focus, .cyan-light.active:hover, .cyan-light:active.focus,
+.cyan-light.active, .cyan-light.active.focus, .cyan-light.active.hover, .cyan-light.active.focus,
+.cyan-light.disabled:hover, .cyan-light[disabled]:hover, fieldset[disabled], .cyan-light:hover,
+.cyan-light.disabled:focus, .cyan-light[disabled]:focus, fieldset[disabled], .cyan-light:focus,
+.cyan-light.disabled.focus, .cyan-light[disabled].focus, fieldset[disabled], .cyan-light.focus,
+.open > .dropdown-toggle.cyan-light,
+.open > .dropdown-toggle.cyan-light:hover,
+.open > .dropdown-toggle.cyan-light:focus,
+.open > .dropdown-toggle.cyan-light.focus {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: var(--bs-cyan);
+    border: 2px solid var(--bs-cyan);
+}
+
+.lime-light:hover, .lime-light:focus,
+.lime-light:active, .lime-light.active:focus, .lime-light.active:hover, .lime-light:active.focus,
+.lime-light.active, .lime-light.active.focus, .lime-light.active.hover, .lime-light.active.focus,
+.lime-light.disabled:hover, .lime-light[disabled]:hover, fieldset[disabled], .lime-light:hover,
+.lime-light.disabled:focus, .lime-light[disabled]:focus, fieldset[disabled], .lime-light:focus,
+.lime-light.disabled.focus, .lime-light[disabled].focus, fieldset[disabled], .lime-light.focus,
+.open > .dropdown-toggle.lime-light,
+.open > .dropdown-toggle.lime-light:hover,
+.open > .dropdown-toggle.lime-light:focus,
+.open > .dropdown-toggle.lime-light.focus {
+    height: 2rem;
+    outline: none;
+    box-shadow: none;
+    color: var(--bs-white);
+    background: #7CB342;
+    border: 2px solid #7CB342;
+}
+
+.img-cover {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.desc {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.mark-opacity {
+    opacity: 75%;
+}
+
+.mark-gradient-lsg-mb {
+    background: linear-gradient(0deg, lightslategray, midnightblue);
+    /*background: midnightblue;*/
+    color: whitesmoke;
+    text-align: center;
+}
+
+.card-area {
+    margin-top: 80px;
+}
+
+.form-check-input:checked {
+    background-color: #9FA8DA!important;
+    box-shadow: #9FA8DA;
+    border: 1px solid #9FA8DA;
+}
+
+/* Animation */
+.fadeIn {
+    animation-name: fadeInAnime;
+    animation-fill-mode: backwards;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+    animation-direction: normal;
+}
+
+@keyframes fadeInAnime {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.fadeLeftRight {
+    animation-name: fadeLeftRightAnime;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeLeftRightAnime {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fadeRightLeft {
+    animation-name: fadeRightLeftAnime;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    /*animation-delay: 1.5s;*/
+    opacity: 0;
+}
+
+@keyframes fadeRightLeftAnime {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fadeUp {
+    animation-name: fadeUpAnime;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUpAnime {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadeDown {
+    animation: fadeDownAnime 1s ease 1.5s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeDownAnime {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.change-time05 {
+    animation-duration: 0.5s;
+}
+
+.change-time1 {
+    animation-duration: 1s;
+}
+
+.change-time15 {
+    animation-duration: 1.5s;
+}
+
+.change-time2 {
+    animation-duration: 2s;
+}
+
+.change-time25 {
+    animation-duration: 2.5s;
+}
+
+.count2 {
+    animation-iteration-count: 2;
+}
+
+.countinfinaite {
+    animation-iteration-count: infinite;
+}
+
+.delay-time1 {
+    animation-delay: 1s;
+}
+
+.delay-time15 {
+    animation-delay: 1.5s;
+}
+
+.delay-time2 {
+    animation-delay: 2s;
+}
+
+.delay-time25 {
+    animation-delay: 2.5s;
+}
+
+.timing-ease {
+    animation-timing-function: ease;
+}
+
+.timing-ease-in {
+    animation-timing-function: ease-in;
+}
+
+.time-ease-out {
+    animation-timing-function: ease-out;
+}
+
+.timing-ease-in-out {
+    animation-timing-function: ease-in-out;
+}
+
+.timing-linear {
+    animation-timing-function: linear;
+}
+
+.timing-steps {
+    animation-timing-function: steps(4, end);
+}
+
+.timing-cubic-bezier {
+    animation-timing-function: cubic-bezier(.17, .67, .67, .51);
+}
+
+.text-color-grey {
+    color: gray;
+}
+
+.img-monochrome-filter {
+    filter: grayscale(100%);
+}
+
+.page-link {
+    color: var(--bs-indigo);
+}
+
+.pagination a:hover,
+.pagination .active a {
+    background-color: #9FA8DA;
+    color: var(--bs-indigo);
+    border: 1px solid #9FA8DA;
+}
+
+.errorMessage {
+    color: red;
+}
+
+/*
+.wf-sans-serif {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+*/
+
+.wf-sans-serif {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.wf-cursive {
+    /*font-family: 'Cinzel Decorative', cursive;*/
+    font-family: 'Cinzel Decorative', sans-serif;
+}

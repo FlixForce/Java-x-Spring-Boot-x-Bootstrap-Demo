@@ -1,0 +1,27 @@
+<!-- Send OK -->
+<div id="children">
+    <div class="container wf-sans-serif" style="margin-top: 6rem">
+        <h1 class="display-3 headline-vl-orange fadeUp timing-ease-in-out">
+            <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.sendComplete}"></span>
+        </h1>
+        <br/>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md">
+                    <label class="fadeUptiming-ease-in-out" th:text="#{i18nfileds.inquiryThanksMessage}"></label>
+<!--
+                    <br/>
+                    <div class="col-md-4">
+                        <a th:href="@{/}"
+                           class="btn btnx-indigo-light btn-sm mt-3 md-4 mb-2 fadeRightLeft timing-ease-in-out" th:text="#{i18nfields.home}"></a>
+                    </div>
+-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-5">
+        <div th:replace="common/footer::footer_fragment"/>
+    </div>
+</div>

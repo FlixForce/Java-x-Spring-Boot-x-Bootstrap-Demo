@@ -1,0 +1,74 @@
+<div class="container wf-sans-serif" style="margin-top: 6rem">
+    <h1 class="display-3 headline-vl-orange fadeLeftRight timing-ease-in-out">
+        <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.inquiry}"></span>
+    </h1>
+
+    <br/>
+
+    <form class="mt-4" th:action="@{/mail_form}" th:object="${mailForm}" th:method="POST">
+        <div class="row fadeUp">
+            <!-- Name -->
+            <div class="col-md-6 form-group">
+                <label class="mb-2" th:text="#{i18nfields.name}"/>
+                <label class="errorMessage">※</label>
+                <input type="text" class="form-control" th:field="*{name}" autofocus/>
+                <span class="errorMessage" th:errors="*{name}"/>
+            </div>
+
+            <br/>
+
+            <!-- Mail Address -->
+            <div class="col-md-6 form-group">
+                <label class="mb-2" th:text="#{i18nfields.email}"/>
+                <label class="errorMessage">※</label>
+                <input type="text" class="form-control" placeholder="example@example.com" th:field="*{email}"/>
+                <span class="errorMessage" th:errors="*{email}"/>
+            </div>
+        </div>
+
+        <br/>
+
+        <!-- Content -->
+        <div class="col-md">
+            <div class="form-group fadeUp timing-ease-in-out">
+                <label class="mb-2" th:text="#{i18nfields.content}"/><label class="errorMessage">※</label>
+                <textarea class="form-control" th:field="*{content}" rows="5"></textarea>
+                <span class="errorMessage" th:errors="*{content}"/>
+            </div>
+        </div>
+
+        <div class="col-md mt-2">
+            <div class="form-group fadeRightLeft delay-time15">
+                <!-- Send Button -->
+                <button type="button" class="btn btn-sm btnx-indigo-light me-2 mt-2" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" th:text="#{i18nfields.sendButton}"/>
+                <!-- Home Button -->
+<!--                <a th:href="@{/}" class="btn btn-sm btnx-indigo-light mt-2" th:text="#{i18nfields.homeButton}"/>-->
+            </div>
+        </div>
+
+        <!-- Confirm Dialog -->
+        <div class="modal fadeUp timing-ease-in-out rounded-3" id="staticBackdrop" data-bs-backdrop="static"
+             data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="staticBackdropLabel"
+                            th:text="#{i18nfields.sendConfirmTitle}"/>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"/>
+                    </div>
+                    <div class="modal-body">
+                        <label th:text="#{i18nfields.sendConfirmMessage}"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-sm btnx-indigo-light" th:text="#{i18nfields.okButton}"/>
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"
+                                th:text="#{i18nfields.cancelButton}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

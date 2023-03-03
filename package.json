@@ -1,0 +1,15 @@
+{
+  "name": "studio_azurite_rox_web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass ./src/main/resources/static/sass/custom.scss ./src/main/resources/static/css/custom.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.57.1"
+  }
+}

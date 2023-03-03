@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header::header_fragment(title = 'Java x SpringBoot x Bootstrap Demo Site | スタジオ予約', scripts = ~{::script}, links = ~{::link})"/>
+<body style="background-color: whitesmoke">
+<!-- Navbar -->
+<div id="parent" th:insert="common/navbar"/>
+
+<div sec:authorize="not authenticated">
+    <th:block id="parent" th:insert="${error/403}"/>
+</div>
+<div sec:authorize="authenticated">
+    <th:block id="parent" th:insert="content/reserve"/>
+</div>
+
+<!-- Footer -->
+<div class="container pt-4">
+    <div th:replace="common/footer::footer_fragment"/>
+</div>
+</body>
+</html>

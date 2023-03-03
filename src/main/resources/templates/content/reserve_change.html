@@ -1,0 +1,183 @@
+<!-- Reserve Change -->
+<div id="children">
+    <div class="container wf-sans-serif" style="margin-top: 6rem"
+         xmlns:th="http://www.thymeleaf.org"
+         xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+        <h1 class="display-3 headline-vl-orange fadeLeftRight timing-ease-in-out">
+            <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.reserveChange}"></span>
+        </h1>
+
+        <br/>
+
+        <!-- 例外エラー表示 -->
+        <div id="parent" th:insert="common/exception_error"/>
+
+        <form class="mt-4" th:action="${actionUrl}" th:object="${reserveForm}" method="POST">
+            <div class="row fadeUp">
+                <!-- Reserve ID -->
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.reserveId}"/>
+                    <input type="text" class="form-control" th:field="*{id}" disabled/>
+                </div>
+
+                <br />
+
+                <!-- Member ID -->
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.studioMemberId}"/>
+                    <input type="text" class="form-control" th:field="*{memberId}" disabled/>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row fadeUp timing-ease-in-out">
+                <!-- Name -->
+                <div class="col-md-8 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.name}"/>
+                    <input type="text" class="form-control" th:field="*{name}" disabled/>
+                </div>
+
+                <br />
+
+                <!-- Studio Type -->
+                <div class="col-md-4 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.studioType}"/><label class="errorMessage">※</label>
+                    <select class="form-select" aria-label="Default select example" th:field="*{studioType}" autofocus>
+                        <option th:value="#{i18nfields.studioType01}" th:text="#{i18nfields.studioType01}"
+                                th:selected="${studioType == selectedValue1}"></option>
+                        <option th:value="#{i18nfields.studioType02}" th:text="#{i18nfields.studioType02}"
+                                th:selected="${studioType == selectedValue2}"></option>
+                        <option th:value="#{i18nfields.studioType03}" th:text="#{i18nfields.studioType03}"
+                                th:selected="${studioType == selectedValue3}"></option>
+                    </select>
+                    <span class="errorMessage" th:errors="*{studioType}"/>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="row fadeUp timing-ease-in-out">
+                <!-- Reserve Date and Time -->
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.startDatetime}"/><label class="errorMessage">※</label>
+                    <input name="datetime" type="datetime-local" class="form-control" th:field="*{startDatetime}"
+                           step="3600"/>
+                    <span class="errorMessage" th:errors="*{startDatetime}"/>
+                </div>
+
+                <br/>
+
+                <div class="col-md-6 form-group">
+                    <label class="mb-2" th:text="#{i18nfields.endDatetime}"/><label class="errorMessage">※</label>
+                    <input name="datetime" type="datetime-local" class="form-control" th:field="*{endDatetime}"
+                           step="3600"/>
+                    <span class="errorMessage" th:errors="*{endDatetime}"/>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="row fadeUp timing-ease-in-out">
+                <!-- Engineer Option -->
+                <div class="col-md">
+                    <div class="form-group">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultEngineer" th:field="*{engineer}">
+                        <label class="mb-2" th:text="#{i18nfields.engineer}" for="flexCheckDefaultEngineer"/>
+                    </div>
+                </div>
+
+                <!-- Mastering Option -->
+                <div class="col-md">
+                    <div class="form-group">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultMastering" th:field="*{mastering}">
+                        <label class="mb-2" th:text="#{i18nfields.mastering}" for="flexCheckDefaultMastering"/>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+
+            <!-- Note -->
+            <div class="col-md">
+                <div class="form-group fadeUp timing-ease-in-out">
+                    <label class="mb-2" th:text="#{i18nfields.note}"/>
+                    <textarea class="form-control" th:field="*{note}" rows="5"></textarea>
+                    <span class="errorMessage" th:errors="*{note}"/>
+                </div>
+            </div>
+
+            <div class="col-md mt-2">
+                <div class="form-group fadeRightLeft delay-time15">
+                    <!-- Change Button -->
+                    <button type="button" class="btn btn-sm btnx-indigo-light me-2 mt-2" data-bs-toggle="modal"
+                            data-bs-target="#staticReserveChange" th:text="#{i18nfields.reserveChangeButton}"/>
+                    <!-- Delete Button -->
+                    <button type="button" class="btn btn-sm btnx-indigo-light me-2 mt-2" data-bs-toggle="modal"
+                            data-bs-target="#staticReserveDelete" th:text="#{i18nfields.reserveDeleteButton}"/>
+
+                    <!-- List Button(Admin) -->
+                    <a sec:authorize-url="/admin" th:href="@{/admin?p=reserve_list}"
+                       class="btn btn-sm btnx-indigo-light me-2 mt-2" th:text="#{i18nfields.reserveListButton}"/>
+                    <!-- List Button(Member) -->
+                    <a sec:authorize-url="/member" th:href="@{/member?p=reserve_list}"
+                       class="btn btn-sm btnx-indigo-light me-2 mt-2" th:text="#{i18nfields.reserveListButton}"/>
+                    <!-- Home Button -->
+<!--                    <a th:href="@{/}" class="btn btn-sm btnx-indigo-light mt-2" th:text="#{i18nfields.homeButton}"/>-->
+                </div>
+            </div>
+
+            <!-- Reserve Change Confirm Dialog -->
+            <div class="modal fadeUp timing-ease-in-out rounded-3" id="staticReserveChange" data-bs-backdrop="static"
+                 data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticReserveChangeLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-dark" id="staticReserveChangeLabel"
+                                th:text="#{i18nfields.reserveChangeConfirmTitle}"/>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        </div>
+                        <div class="modal-body">
+                            <label th:text="#{i18nfields.reserveChangeConfirmMessage}"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-sm btnx-indigo-light"
+                                    th:text="#{i18nfields.okButton}"/>
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"
+                                    th:text="#{i18nfields.cancelButton}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reserve Delete Confirm Dialog -->
+            <div class="modal fadeUp timing-ease-in-out rounded-3" id="staticReserveDelete" data-bs-backdrop="static"
+                 data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticReserveDeleteLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-dark" id="staticReserveDeleteLabel"
+                                th:text="#{i18nfields.reserveDeleteConfirmTitle}"/>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        </div>
+                        <div class="modal-body">
+                            <label th:text="#{i18nfields.reserveDeleteConfirmMessage}"/>
+                        </div>
+                        <div class="modal-footer">
+                            <!-- Admin -->
+                            <a sec:authorize-url="/admin" th:href="@{/admin?p=reserve_delete-{id}(id=*{id})}"
+                               class="btn btn-sm btnx-indigo-light" th:text="#{i18nfields.okButton}"/>
+                            <!-- Member -->
+                            <a sec:authorize-url="/member" th:href="@{/member?p=reserve_delete-{id}(id=*{id})}"
+                               class="btn btn-sm btnx-indigo-light" th:text="#{i18nfields.okButton}"/>
+                            <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal"
+                                    th:text="#{i18nfields.cancelButton}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

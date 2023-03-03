@@ -1,0 +1,34 @@
+<!-- Member Change OK -->
+<div id="children">
+    <div class="container wf-sans-serif" style="margin-top: 6rem"
+         xmlns:th="http://www.thymeleaf.org"
+         xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+        <h1 class="display-3 headline-vl-green fadeUp timing-ease-in-out">
+            <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.memberDeleteComplete}"></span>
+        </h1>
+
+        <br/>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md">
+                    <label class="fadeUptiming-ease-in-out" th:text="#{i18nfields.memberDeleteThanksMessage}"></label>
+                    <br/>
+                    <div class="col-md-4 mt-2 fadeRightLeft timing-ease-in-out">
+                        <!-- Admin -->
+                        <a sec:authorize-url="/admin" th:href="@{/admin?p=member_list}" class="btn btn-sm btnx-indigo-light me-2 mt-2" th:text="#{i18nfields.memberListButton}"/>
+                        <!-- Member -->
+                        <a sec:authorize-url="/member" th:href="@{/member?p=member_list}" class="btn btn-sm btnx-indigo-light me-2 mt-2" th:text="#{i18nfields.memberListButton}"/>
+<!--
+                        <a th:href="@{/}"
+                           class="btn btnx-indigo-light btn-sm mt-3 md-4 mb-2" th:text="#{i18nfields.home}"></a>
+-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-5">
+        <div th:replace="common/footer::footer_fragment"/>
+    </div>
+</div>

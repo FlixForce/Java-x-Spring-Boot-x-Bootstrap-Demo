@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header::header_fragment(title = 'Java x SpringBoot x Bootstrap Demo Site | 403 Forbidden', scripts = ~{::script}, links = ~{::link})"/>
+<body style="background-color: whitesmoke">
+    <!-- Navbar -->
+    <div id="parent" th:insert="common/navbar"/>
+
+    <div class="container wf-sans-serif" style="margin-top: 6rem">
+        <h1 class="display-3 headline-vl-red fadeUp timing-ease-in-out">
+            <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.forbidden403}"></span>
+        </h1>
+
+        <br/>
+
+        <div class="container mt-2">
+            <!-- 認証済みの場合、表示する -->
+            <form class="fadeRightLeft timing-ease-in-out" sec:authorize="authenticated" method="POST"
+                th:action="@{/logout}">
+                <!-- Member -->
+                <a sec:authorize-url="/member" th:href="@{/member?p=reserve_list}" class="btn btnx-indigo-light btn-sm mt-2 me-2"
+                   th:text="#{i18nfields.reserveList}"></a>
+                <!-- Admin -->
+                <a sec:authorize-url="/admin" th:href="@{/admin?p=reserve_list}" class="btn btnx-indigo-light btn-sm mt-2 me-2"
+                   th:text="#{i18nfields.reserveList}"></a>
+                <a sec:authorize-url="/admin" th:href="@{/admin?p=member_list}" class="btn btnx-indigo-light btn-sm mt-2 me-2"
+                   th:text="#{i18nfields.memberList}"></a>
+                <button class="btn btnx-indigo-light btn-sm me-2 mt-2" type="submit">
+                    <span th:text="#{i18nfields.logout}"></span>
+                    <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+                </button>
+            </form>
+            <a th:href="@{/}" class="btn btnx-indigo-light btn-sm mt-2 md-4" th:text="#{i18nfields.home}"></a>
+        </div>
+    </div>
+
+    <div class="container pt-4">
+        <div th:replace="common/footer::footer_fragment"/>
+    </div>
+</body>
+</html>

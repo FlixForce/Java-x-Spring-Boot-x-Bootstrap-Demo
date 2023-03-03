@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header::header_fragment(title = 'Java x SpringBoot x Bootstrap Demo Site | ログイン', scripts = ~{::script}, links = ~{::link})"/>
+<body style="background-color: whitesmoke">
+<!-- Navbar -->
+<div id="parent" th:insert="common/navbar"/>
+
+<div class="container wf-sans-serif" style="margin-top: 6rem">
+    <h1 class="display-3 headline-vl-orange fadeLeftRight timing-ease-in-out">
+        <span class="display-6 mb-3 text-color-grey ms-3" th:text="#{i18nfields.login}"></span></h1>
+    <br/>
+    <div class="row">
+        <div class="col-md-12 fs-5">
+            <p th:if="${param.error}" class="errorMessage" th:text="#{i18nfields.loginError}"/>
+        </div>
+
+        <br/>
+    </div>
+
+    <form th:method="POST" th:action="@{/login}">
+        <div class="row fadeUp">
+            <div class="col-md form-group">
+                <!-- Email Address -->
+                <label class="mb-2" th:text="#{i18nfields.email}"/>
+                <input type="text" name="username" class="form-control mb-2" autofocus/>
+            </div>
+
+            <div class="col-md form-group">
+                <!-- Password -->
+                <label class="mb-2" th:text="#{i18nfields.password}"/>
+                <input type="password" name="password" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="mt-2 form-group fadeRightLeft delay-time1">
+            <!-- Log in Button -->
+            <button type="submit" class="btn btn-sm btnx-indigo-light me-2">
+                <span th:text="#{i18nfields.login}"></span>
+                <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+            </button>
+            <!-- Member Registration Button -->
+            <a th:href="@{/new_registration_form}" th:text="#{i18nfields.newRegistrationButton}"
+               class="btn btn-sm btnx-indigo-light me-2"/>
+            <!-- Home Button -->
+<!--
+            <a th:href="@{/}" th:text="#{i18nfields.homeButton}"
+               class="btn btn-sm btnx-indigo-light"/>
+-->
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<div class="container pt-4">
+    <div th:replace="common/footer::footer_fragment"/>
+</div>
+</body>
+</html>

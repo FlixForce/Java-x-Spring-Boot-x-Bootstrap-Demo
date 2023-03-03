@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="common/header::header_fragment(title = 'Java x SpringBoot x Bootstrap Demo Site | スタジオ会員新規登録', scripts = ~{::script}, links = ~{::link})"/>
+<body style="background-color: whitesmoke">
+    <!-- Navbar -->
+    <div id="parent" th:insert="common/navbar"/>
+
+    <th:block id="parent" th:insert="content/new_registration"/>
+
+    <!-- Footer -->
+    <div class="container pt-4">
+        <div th:replace="common/footer::footer_fragment"/>
+    </div>
+</body>
+</html>
