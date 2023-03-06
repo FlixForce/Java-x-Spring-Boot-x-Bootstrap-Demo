@@ -388,7 +388,7 @@ public class AdminController {
     /**
      * 会員情報検索フォームクリア
      *
-     * @return 予約一覧画面へリダイレクト
+     * @return 会員一覧画面へリダイレクト
      */
     @GetMapping("/admin/member_search_clear")
     public String adminMemberSearchInit() {

@@ -1,22 +1,16 @@
-DROP TABLE IF EXISTS user_role;
-DROP TABLE IF EXISTS login_user;
-DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS studio_member;
-DROP TABLE IF EXISTS reserve_info;
-
-CREATE TABLE roles(
+CREATE TABLE IF NOT EXISTS roles(
                       id INTEGER PRIMARY KEY,
                       name VARCHAR(32) NOT NULL
 );
 
-CREATE TABLE login_user(
+CREATE TABLE IF NOT EXISTS login_user(
                            id INTEGER PRIMARY KEY,
                            name VARCHAR(128) NOT NULL,
                            email VARCHAR(256) NOT NULL,
                            password VARCHAR(128) NOT NULL
 );
 
-CREATE TABLE user_role(
+CREATE TABLE IF NOT EXISTS user_role(
                           user_id INTEGER,
                           role_id INTEGER,
                           CONSTRAINT fk_user_role PRIMARY KEY (user_id, role_id),
@@ -24,7 +18,7 @@ CREATE TABLE user_role(
                           CONSTRAINT fk_user_role_role_id FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
-CREATE TABLE studio_member(
+CREATE TABLE IF NOT EXISTS studio_member(
                               id INTEGER PRIMARY KEY NOT NULL,
                               name VARCHAR(128) NOT NULL,
                               furigana VARCHAR(128),
@@ -38,7 +32,7 @@ CREATE TABLE studio_member(
                               CONSTRAINT fk_studio_user FOREIGN KEY (id) REFERENCES login_user(id)
 );
 
-CREATE TABLE reserve_info(
+CREATE TABLE IF NOT EXISTS reserve_info(
                              id SERIAL PRIMARY KEY NOT NULL,
                              member_id INTEGER NOT NULL,
                              studio_type VARCHAR(16) NOT NULL,
