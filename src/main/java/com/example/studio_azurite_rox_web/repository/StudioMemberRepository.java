@@ -49,8 +49,6 @@ public class StudioMemberRepository {
                 studioMember.getEmail(),
                 passwordEncoder.encode(studioMemberForm.getPassword()));
 
-log.info("\nInsert 1");
-
         // user_role
         Integer roleId = 2;
         // 管理者
@@ -86,8 +84,6 @@ log.info("\nInsert 1");
                 studioMember.getNote(),
                 studioMember.getRegistrationDate());
 
-        log.info("\nInsert 4");
-
         return true;
     }
 
@@ -105,8 +101,6 @@ log.info("\nInsert 1");
                 studioMemberForm.getName(),
                 studioMemberForm.getEmail(),
                 studioMemberForm.getId());
-
-//        log.info("\n" + studioMemberForm);
 
         // user_role
         // 管理者にチェックが入っている時は、変更する
@@ -190,38 +184,6 @@ log.info("\nInsert 1");
     }
 
     /**
-     * スタジオ会員情報一覧
-     *
-     * @return 会員情報一覧
-     */
-/*
-    public List<StudioMemberForm> findAll() throws DataAccessException {
-        String sql = "SELECT * FROM studio_member ORDER BY furigana ASC";
-        List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
-
-        List<StudioMemberForm> studioMemberFormList = new ArrayList<>();
-        for (Map<String, Object> result : resultList) {
-            StudioMemberForm studioMemberForm = new StudioMemberForm();
-            studioMemberForm.setId((Integer) result.get("id"));
-            studioMemberForm.setName(result.get("name").toString());
-            studioMemberForm.setFurigana(result.get("furigana").toString());
-            studioMemberForm.setAddress(result.get("address").toString());
-            studioMemberForm.setPhone(result.get("phone").toString());
-            studioMemberForm.setEmail(result.get("email").toString());
-            studioMemberForm.setArtistName(result.get("artist_name").toString());
-            studioMemberForm.setMemberCount(Short.parseShort(result.get("member_count").toString()));
-            studioMemberForm.setNote(result.get("note").toString());
-            // "秒"部分を削除
-            studioMemberForm.setRegistrationDate(result.get("registration_date").toString());
-            studioMemberForm.setRegistrationDate(studioMemberForm.getRegistrationDate().substring(0, 16));
-            studioMemberFormList.add(studioMemberForm);
-        }
-
-        return studioMemberFormList;
-    }
-*/
-
-    /**
      * スタジオ会員情報の検索
      *
      * @param id 会員ID
@@ -256,59 +218,6 @@ log.info("\nInsert 1");
 
         return studioMemberForm;
     }
-
-    /**
-     * スタジオ会員情報の検索
-     *
-     * @return 会員情報リスト
-     * @Param StudioNenverSearchForm 会員ID, 名前
-     */
-/*
-    public List<StudioMemberForm> findByIdAndName(StudioMemberSearchForm studioMemberSearchForm) throws DataAccessException {
-        String paramId = "SM.id = ?";
-        String paramName = "SM.name LIKE CONCAT('%', ?, '%')";
-        String paramSort = " ORDER BY furigana ASC";
-
-        String sql = "SELECT SM.*, LU.password FROM studio_member SM " +
-                "LEFT JOIN login_user LU ON SM.id = LU.id " +
-                "WHERE ";
-//                "SM.id = ? OR SM.name LIKE CONCAT('%', ?, '%') ORDER BY furigana ASC";
-
-        List<Map<String, Object>> resultList = null;
-        // 会員ID + 名前
-        if (studioMemberSearchForm.getId() != null && !studioMemberSearchForm.getId().equals("") &&
-                studioMemberSearchForm.getName() != null && !studioMemberSearchForm.getName().equals("")) {
-            sql = sql + paramId + " OR " + paramName + paramSort;
-            resultList = jdbcTemplate.queryForList(sql, studioMemberSearchForm.getId(), studioMemberSearchForm.getName());
-        // 会員IDのみ
-        } else if (studioMemberSearchForm.getId() != null && !studioMemberSearchForm.getId().equals("")) {
-            sql = sql + paramId + paramSort;
-            resultList = jdbcTemplate.queryForList(sql, studioMemberSearchForm.getId());
-        // 名前のみ
-        } else if (studioMemberSearchForm.getName() != null && !studioMemberSearchForm.getName().equals("")) {
-            sql = sql + paramName + paramSort;
-            resultList = jdbcTemplate.queryForList(sql, studioMemberSearchForm.getName());
-        }
-
-//        List<Map<String, Object>> resultList = findOrCount(true, studioMemberSearchForm);
-
-        List<StudioMemberForm> studioMemberFormList = new ArrayList<>();
-        for (Map<String, Object> result : resultList) {
-            StudioMemberForm studioMemberForm = new StudioMemberForm();
-            studioMemberForm.setId((Integer) result.get("id"));
-            studioMemberForm.setName(result.get("name").toString());
-            studioMemberForm.setFurigana(result.get("furigana").toString());
-            studioMemberForm.setAddress(result.get("address").toString());
-            studioMemberForm.setPhone(result.get("phone").toString());
-            studioMemberForm.setEmail(result.get("email").toString());
-            studioMemberForm.setArtistName(result.get("artist_name").toString());
-            studioMemberForm.setRegistrationDate(result.get("registration_date").toString());
-            studioMemberFormList.add(studioMemberForm);
-        }
-
-        return studioMemberFormList;
-    }
-*/
 
     /**
      * スタジオ会員情報一覧(ページング)

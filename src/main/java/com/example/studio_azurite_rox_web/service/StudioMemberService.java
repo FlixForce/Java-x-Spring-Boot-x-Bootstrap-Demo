@@ -47,19 +47,7 @@ public class StudioMemberService {
         return studioMemberRepository.findListPaging(mode, studioMemberSearchForm, startIndex, pageSize);
     }
 
-/*
-    public List<StudioMemberForm> findAll() throws DataAccessException  {
-        return studioMemberRepository.findAll();
-    }
-*/
-
     public StudioMemberForm findById(Integer id) throws DataAccessException  {
         return studioMemberRepository.findById(id);
     }
-
-/*
-    public List<StudioMemberForm> findByIdAndName(StudioMemberSearchForm studioMemberSearchForm) throws DataAccessException {
-        return studioMemberRepository.findByIdAndName(studioMemberSearchForm);
-    }
-*/
 }

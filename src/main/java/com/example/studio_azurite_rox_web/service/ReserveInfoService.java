@@ -45,19 +45,7 @@ public class ReserveInfoService {
         return reserveInfoRepository.findListPaging(mode, reserveSearchForm, startIndex, pageSize);
     }
 
-/*
-    public List<ReserveForm> findAll(Integer memberId) throws DataAccessException {
-        return reserveInfoRepository.findAll(memberId);
-    }
-*/
-
     public ReserveForm findById(Integer id) throws DataAccessException {
         return reserveInfoRepository.findById(id);
     }
-
-/*
-    public List<ReserveForm> findBySearch(ReserveSearchForm reserveSearchForm) throws DataAccessException {
-        return reserveInfoRepository.findBySearch(reserveSearchForm);
-    }
-*/
 }

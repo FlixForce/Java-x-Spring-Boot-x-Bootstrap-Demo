@@ -13,19 +13,6 @@ import java.util.Optional;
 @Repository
 public class LoginUserRepository {
     private static final String SQL_FIND_BY_EMAIL = """
-/*
-            SELECT
-                u.email,
-                u.name As user_name,
-                u.password,
-                r.name As role_name
-            FROM login_user u
-            JOIN user_role ur
-              ON u.id = ur.user_id
-            JOIN roles r
-              ON ur.role_id = r.id
-            WHERE u.email = :email
-*/
             SELECT
                 u.id,
                 u.email,
@@ -60,7 +47,6 @@ public class LoginUserRepository {
           return null;
       }
 
-//      return new LoginUser(email, userName, password, roleList);
         return new LoginUser(id, email, userName, password, roleList);
     };
 
